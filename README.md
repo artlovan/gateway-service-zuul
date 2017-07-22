@@ -1,17 +1,12 @@
 # gateway-service-zuul
 
-Demo on Hystrix circuit breaker, how weather-app takes over the response
-and opens the circuit when weather-service is not reachable.
+Gateway service that will forward requests to services and act as single entry point for clients.
+
 
 1. Run discovery-server
-2. Run weather-service
-3. Run weather-app
-4. Run hystrix-dashboard
-5. In browser, go to http://localhost:8080/hystrix
-6. Run curl few times: $ curl localhost:8000/current/weather
-7. Back in browser, in input field; enter "http://localhost:8000/hystrix.stream"
-8. Add title in Title input field "Weather App"
-9. Click "Monitor Stream" button
-10. You can run No. 7 to generate new metrics
-11. For real fun, with apache benchmark, run: $ ab -c 20 -n 100 localhost:8000/current/weather
-12. Bring down all you instances
+2. Run gateway-service
+3. Run hello-app
+4. Run goodbye-service
+5. Request: $ curl http://localhost:8080/hello (observe request forwarding to hello-service)
+6. Request: $ curl http://localhost:8080/goodbye (observe request forwarding to goodbye-service)
+7. Bring down all you instances
